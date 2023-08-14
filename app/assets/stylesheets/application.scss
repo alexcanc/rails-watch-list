@@ -6,6 +6,12 @@
 // External libraries
 @import "bootstrap/scss/bootstrap";
 @import "font-awesome";
+@import "tom-select/dist/scss/tom-select";
+@import 'aos/dist/aos.css';
+// app/assets/stylesheets/application.scss
+@import "star-rating.js/dist/star-rating.css";
+
+
 
 // Your CSS partials
 @import "components/index";
@@ -163,4 +169,41 @@ nav a:hover {
   content: "|";
   color: #888;  /* a muted color for the separator */
   padding: 0 10px;  /* space out the separator */
+}
+
+/* Review Styles */
+.reviews-section {
+  background-color: #f7f7f7; /* Light gray background for separation */
+  padding: 40px 0;
+  margin-top: 50px;
+  border-top: 2px solid #eaeaea;
+  border-bottom: 2px solid #eaeaea;
+}
+
+.review-content {
+  background-color: #ffffff;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+.add-review {
+  margin-top: 30px;
+}
+
+.review-title {
+  text-align: center;
+  margin-bottom: 30px;
+  margin-top: 10px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.movie-card {
+  margin-bottom: 40px;
 }

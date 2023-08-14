@@ -6,12 +6,13 @@ class BookmarksController < ApplicationController
 
   def create
     @list = List.find(params[:list_id])
-    @bookmark = Bookmark.new(bookmark_params)
-    @bookmark.list = @list
+    @bookmark = @list.bookmarks.build(bookmark_params)
     if @bookmark.save
+      # Redirecting to the list's show page after the bookmark is saved.
       redirect_to list_path(@list)
     else
-      render :new
+      # Rendering the list's show page (where the form is) with error messages.
+      render 'lists/show'
     end
   end
 

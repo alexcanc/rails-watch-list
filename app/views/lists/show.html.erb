@@ -1,4 +1,12 @@
 <!-- app/views/lists/show.html.erb -->
+<%= form_with(url: list_path(@list), method: "get", local: true) do %>
+  <%= text_field_tag :movie_query, params[:movie_query], placeholder: "Search movies..." %>
+  <%= submit_tag "Search Movies" %>
+<% end %>
+<% if @movies.empty? %>
+  <p>No movies found for your search criteria.</p>
+<% end %>
+
 
 <div class="movies-container">
   <% @movies.each_slice(2) do |slice| %>
@@ -15,5 +23,25 @@
         </div>
       <% end %>
     </div>
+  <% end %>
+</div>
+
+<div class="reviews-section container">
+    <h2 class="review-title">Reviews</h2>
+
+    <% @list.reviews.each do |review| %>
+        <div class="review-content">
+  <p><%= review.content %></p>
+  <div class="star-rating" data-controller="star-rating" data-rating="<%= review.rating %>"></div>
+</div>
+    <% end %>
+
+<div class="add-review">
+  <h3>Add a Review</h3>
+  <%= simple_form_for([@list, Review.new]) do |f| %>
+    <%= f.input :content, input_html: { class: 'form-control' } %>
+    <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience", input_html: {data: {controller: "star-rating"}} %>
+    <%= f.hidden_field :list_id, value: @list.id %> <!-- Set the list_id -->
+    <%= f.submit "Add Review", class: 'btn btn-primary' %>
   <% end %>
 </div>

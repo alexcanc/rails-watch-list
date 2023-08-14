@@ -1,4 +1,17 @@
-<h1>My Lists <%= link_to 'Create List', new_list_path, class: "create-btn" %></h1>
+<h1>
+  <span data-controller="typed"></span>
+  My Lists <%= link_to 'Create List', new_list_path, class: "create-btn" %>
+</h1>
+
+<%= form_with(url: lists_path, method: "get", local: true) do %>
+  <%= text_field_tag :list_query, params[:list_query], placeholder: "Search lists..." %>
+  <%= submit_tag "Search Lists" %>
+<% end %>
+<% if @lists.empty? %>
+  <p>No lists found for your search criteria.</p>
+<% end %>
+
+
 
 <div class="lists-container">
   <% @lists.each do |list| %>
