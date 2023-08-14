@@ -1,6 +1,7 @@
 class ListsController < ApplicationController
+  # app/controllers/lists_controller.rb
   def index
-    @lists = List.all
+    @lists = List.includes(bookmarks: :movie).all
   end
 
   def show
