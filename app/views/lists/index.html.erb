@@ -3,7 +3,7 @@
   My Lists <%= link_to 'Create List', new_list_path, class: "create-btn" %>
 </h1>
 
-<%= form_with(url: lists_path, method: "get", local: true) do %>
+<%= form_with(url: lists_path, method: "get", local: true, class: "search-form") do %>
   <%= text_field_tag :list_query, params[:list_query], placeholder: "Search lists..." %>
   <%= submit_tag "Search Lists" %>
 <% end %>
@@ -11,13 +11,45 @@
   <p>No lists found for your search criteria.</p>
 <% end %>
 
-
-
 <div class="lists-container">
   <% @lists.each do |list| %>
     <div class="list-tile" style="background-image: url('https://wallpapers.com/images/featured-full/avengers-vm16xv4a69smdauy.jpg')">
       <%= link_to list.name, list_path(list) %>
+      <button class="delete-button" data-list-id="<%= list.id %>">Delete <span class="delete-icon">X</span></button>
     </div>
   <% end %>
 </div>
 <div class="clearfix"></div>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const deleteButtons = document.querySelectorAll(".delete-button");
+
+    deleteButtons.forEach(button => {
+      button.addEventListener("click", function() {
+        const listId = this.getAttribute("data-list-id");
+        if (listId) {
+          if (confirm("Are you sure you want to delete this list?")) {
+            fetch(`/lists/${listId}`, {
+              method: "DELETE",
+              headers: {
+                "X-CSRF-Token": Rails.csrfToken(),
+                "Content-Type": "application/json"
+              }
+            })
+              .then(response => response.json())
+              .then(data => {
+                // Handle success or error, e.g., remove the list tile
+                if (data.success) {
+                  this.closest(".list-tile").remove();
+                } else {
+                  alert("An error occurred while deleting the list.");
+                }
+              });
+          }
+        }
+      });
+    });
+  });
+</script>

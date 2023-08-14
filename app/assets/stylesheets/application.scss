@@ -245,3 +245,26 @@ nav a:hover {
 .star-rating[data-rating='5']::before {
   color: gold;
 }
+
+.search-form {
+  background-color: #f2f2f2;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.delete-button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.delete-icon {
+  margin-left: 5px;
+}
