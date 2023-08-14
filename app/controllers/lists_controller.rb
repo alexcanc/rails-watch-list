@@ -1,12 +1,13 @@
 class ListsController < ApplicationController
   # app/controllers/lists_controller.rb
   def index
-    if params[:list_query].present?
-      @lists = List.search_by_name(params[:list_query])
-    else
-      @lists = List.all
-    end
+  if params[:list_query].present?
+    @lists = List.search_by_name(params[:list_query])
+  else
+    @lists = List.all
   end
+end
+
 
   def show
     @list = List.find(params[:id])
@@ -28,7 +29,7 @@ class ListsController < ApplicationController
   def create
     @list = List.new(list_params)
     if @list.save
-      redirect_to lists_path
+      redirect_to @list, notice: 'List was successfully created.'
     else
       render :new
     end

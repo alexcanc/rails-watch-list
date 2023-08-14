@@ -8,11 +8,9 @@ class BookmarksController < ApplicationController
     @list = List.find(params[:list_id])
     @bookmark = @list.bookmarks.build(bookmark_params)
     if @bookmark.save
-      # Redirecting to the list's show page after the bookmark is saved.
-      redirect_to list_path(@list)
+      redirect_to list_path(@list), notice: 'Bookmark was successfully created.'
     else
-      # Rendering the list's show page (where the form is) with error messages.
-      render 'lists/show'
+      redirect_to list_path(@list), alert: 'Failed to create bookmark.'
     end
   end
 
