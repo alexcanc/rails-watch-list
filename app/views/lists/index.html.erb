@@ -1,10 +1,10 @@
-<h1>All Lists</h1>
+<h1>My Lists <%= link_to 'Create List', new_list_path, class: "create-btn" %></h1>
 
-<% @lists.each do |list| %>
-  <h2><%= list.name %></h2>
-  <ul>
-    <% list.bookmarks.each do |bookmark| %>
-      <li><%= bookmark.movie.title %></li>
-    <% end %>
-  </ul>
-<% end %>
+<div class="lists-container">
+  <% @lists.each do |list| %>
+    <div class="list-tile" style="background-image: url('https://wallpapers.com/images/featured-full/avengers-vm16xv4a69smdauy.jpg')">
+      <%= link_to list.name, list_path(list) %>
+    </div>
+  <% end %>
+</div>
+<div class="clearfix"></div>

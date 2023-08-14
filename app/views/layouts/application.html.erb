@@ -9,6 +9,11 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
+  <nav>
+  <%= link_to 'New List', new_list_path %> <span class="separator"></span>
+  <%= link_to 'My Lists', lists_path %>
+</nav>
+
 
   <body>
     <%= yield %>

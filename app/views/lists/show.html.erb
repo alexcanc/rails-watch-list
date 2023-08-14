@@ -1,1 +1,19 @@
-<h1><%= @list.name %></h1>
+<!-- app/views/lists/show.html.erb -->
+
+<div class="movies-container">
+  <% @movies.each_slice(2) do |slice| %>
+    <div class="row">
+      <% slice.each do |movie| %>
+        <div class="movie-card">
+          <div class="movie-image">
+            <%= image_tag movie.poster_url, alt: movie.title %>
+          </div>
+          <div class="movie-info">
+            <h2><%= movie.title %> <span class="movie-rating"><%= movie.rating %></span></h2>
+            <p><%= movie.overview %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

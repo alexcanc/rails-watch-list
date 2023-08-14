@@ -10,3 +10,157 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+/* stylesheets/movies.css or stylesheets/application.css */
+
+body {
+  background-color: #F7F7F7;  /* A shade less than white */
+}
+
+.movies-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;  /* vertical gap between rows */
+  max-width: 1200px; /* or any value suitable for your design */
+  margin: 0 auto;  /* centers the container */
+}
+
+.row {
+  display: flex;
+  gap: 20px;  /* horizontal gap between movie cards */
+  justify-content: center; /* centers the movie cards horizontally */
+  margin-top: 35px;
+}
+
+.movie-card {
+  width: 44%;  /* makes two cards in a row */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-wrap: nowrap;
+
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s;  /* for smooth hover effect */
+
+  /* optional: add a hover effect to lift the card */
+  &:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15), 0 8px 24px rgba(0, 0, 0, 0.09);
+  }
+}
+
+.movie-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  max-height: 60vh;
+}
+
+.movie-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 8px;
+}
+
+.movie-rating {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.row > .movie-card {
+  flex-shrink: 0;
+  padding-right: 0;
+  padding-left: 0;
+  margin-top: var(--bs-gutter-y);
+}
+
+.lists-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Still want 3 columns */
+  gap: 20px;  /* Gap between the grid items */
+  justify-content: center;  /* Center the items on the horizontal axis */
+  align-items: start;  /* Align items to the start on the vertical axis */
+  width: 90%; /* Set a maximum width for the container */
+  margin: 0 auto; /* Center the container on the page */
+}
+
+.list-tile {
+  width: 100%; /* Take up the full width of the grid cell */
+  padding-bottom: 40%; /* This ratio will give it a rectangle shape, adjust as needed */
+  position: relative; /* Relative positioning to place the text over the image */
+  background-size: cover; /* Ensures the image covers the whole div */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  text-align: center; /* Center the text horizontally */
+  transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s; /* smooth out changes to these properties */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* add a subtle shadow */
+}
+
+.list-tile a {
+  position: absolute;  /* Absolute positioning to place the link in the middle of the div */
+  top: 50%;  /* Start halfway down the container */
+  left: 50%;  /* Start halfway across the container */
+  transform: translate(-50%, -50%);  /* Shift the link back by half of its own height and width */
+  color: white;  /* Make the link text white */
+  font-weight: bold;  /* Make the link text bold */
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);  /* Add a shadow to make the text more readable */
+  font-size: 24px;
+}
+
+.list-tile:hover {
+  transform: scale(1.05); /* scale the rectangle up slightly */
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25); /* add a shadow */
+}
+
+h1 {
+  margin-bottom: 20px; /* adjust as necessary */
+  margin-left: 57px;
+  margin-top: 20px;
+}
+
+.create-btn {
+  background-color: #3498db;  /* example color */
+  color: #ffffff;
+  padding: 10px 20px;  /* button padding */
+  border-radius: 10px;  /* rounded corners */
+  border: none;        /* remove border */
+  cursor: pointer;     /* change cursor on hover */
+  transition: background-color 0.3s;  /* smooth out the background color transition */
+  float: right;    /* push the button to the right */
+  margin-top: 2px;
+  margin-right: 58px;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.create-btn:hover {
+  background-color: #2980b9;  /* a darker blue for hover effect */
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+nav {
+  background-color: #333;  /* a dark background for contrast */
+  padding: 10px 20px;  /* some padding for spacing */
+  font-size: 1.1rem;  /* slightly bigger text */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);  /* subtle shadow for depth */
+}
+
+nav a {
+  color: #f2f2f2;  /* light color for contrast against dark background */
+  text-decoration: none;  /* remove underline */
+  margin: 0 15px;  /* some margin for spacing between links */
+  transition: color 0.3s;  /* smooth color transition */
+}
+
+nav a:hover {
+  color: #00bcd4;  /* change color on hover for visual feedback */
+}
+
+.separator::before {
+  content: "|";
+  color: #888;  /* a muted color for the separator */
+  padding: 0 10px;  /* space out the separator */
+}
