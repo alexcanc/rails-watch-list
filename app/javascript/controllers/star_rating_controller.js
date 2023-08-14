@@ -1,8 +1,8 @@
-import { Controller } from "@hotwired/stimulus"
-import StarRating from "star-rating.js"
+import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
   connect() {
-    new StarRating(this.element)
+    const rating = parseFloat(this.data.get("rating")); // Parse the rating as a float
+    this.element.style.setProperty("--rating", rating);
   }
 }

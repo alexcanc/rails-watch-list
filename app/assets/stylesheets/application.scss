@@ -207,3 +207,41 @@ nav a:hover {
 .movie-card {
   margin-bottom: 40px;
 }
+
+/* Star Rating Styles */
+.star-rating {
+  display: inline-block;
+  font-size: 20px; /* Adjust as needed */
+  color: gold; /* Default color for filled stars */
+}
+
+.star-rating::before {
+  content: '\2605'; /* Unicode character for a solid star */
+  position: relative;
+  display: inline-block;
+}
+
+.star-rating[data-rating='0']::before {
+  content: '\2606'; /* Unicode character for an empty star */
+  color: gray; /* Color for empty stars */
+}
+
+.star-rating[data-rating='1']::before {
+  color: gold;
+}
+
+.star-rating[data-rating='2']::before {
+  color: gold;
+}
+
+.star-rating[data-rating='3']::before {
+  color: gold;
+}
+
+.star-rating[data-rating='4']::before {
+  color: gold;
+}
+
+.star-rating[data-rating='5']::before {
+  color: gold;
+}
