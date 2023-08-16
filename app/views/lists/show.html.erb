@@ -13,7 +13,8 @@
         <div class="movie-card">
           <div class="movie-image">
             <%= image_tag movie.poster_url, alt: movie.title %>
-            <button class="delete-button">Delete <span class="delete-icon">X</span></button>
+            <% bookmark = @bookmarks.find { |b| b.movie == movie } %>
+          <%= link_to "✖ Delete", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "ms-3 text-danger delete-button" if bookmark %>
           </div>
           <div class="movie-info">
             <h2><%= movie.title %> <span class="movie-rating"><%= movie.rating %></span></h2>

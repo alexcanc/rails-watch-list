@@ -6,18 +6,20 @@ class ListsController < ApplicationController
   else
     @lists = List.all
   end
+  @bookmarks = Bookmark.where(list: @list)
 end
 
+def show
+  @list = List.find(params[:id])
 
-  def show
-    @list = List.find(params[:id])
-
-    if params[:movie_query].present?
-      @movies = @list.movies.search_by_title_and_overview(params[:movie_query])
-    else
-      @movies = @list.movies
-    end
+  if params[:movie_query].present?
+    @movies = @list.movies.search_by_title_and_overview(params[:movie_query])
+  else
+    @movies = @list.movies
   end
+
+  @bookmarks = Bookmark.where(list: @list)
+end
 
   def new
     @list = List.new
@@ -25,6 +27,12 @@ end
     # @bookmark = Bookmark.new
   end
 
+  def destroy
+    @list = List.find(params[:id])
+    @list.destroy
+
+    redirect_to lists_path, notice: 'List was successfully deleted.'
+  end
 
   def create
     @list = List.new(list_params)

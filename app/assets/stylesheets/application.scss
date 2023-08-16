@@ -253,18 +253,20 @@ nav a:hover {
   margin-bottom: 20px;
 }
 
-.delete-button {
-  background-color: red;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 5px;
-  cursor: pointer;
+.list-tile .delete-button {
   position: absolute;
-  top: 5px;
-  right: 5px;
-}
-
-.delete-icon {
-  margin-left: 5px;
+  bottom: 3px;
+  right: 3px;
+  left: auto;
+  top: auto;
+  transform: none;
+  font-size: 18px;
+  border: none;
+  text-decoration: none;
+  color: rgb(255, 33, 33);
+  font-weight: bold;
+  cursor: pointer;
+  text-shadow: none;  /* To remove any inherited text-shadow */
+  background: none;   /* If the button inherits any background color, you can reset it */
+  padding: 2px 5px;   /* Some padding for better appearance, adjust as needed */
 }
