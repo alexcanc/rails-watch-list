@@ -270,3 +270,9 @@ nav a:hover {
   background: none;   /* If the button inherits any background color, you can reset it */
   padding: 2px 5px;   /* Some padding for better appearance, adjust as needed */
 }
+
+.button {
+  color: red;
+  text-decoration: none;
+  position: absolute;
+}
