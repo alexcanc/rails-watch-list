@@ -34,15 +34,25 @@ class ListsController < ApplicationController
     redirect_to lists_path, notice: 'List was successfully deleted.'
   end
 
-  # app/controllers/lists_controller.rb
+  def create
+    @list = List.new(list_params)
+    if @list.save
+      redirect_to @list, notice: 'List was successfully created.'
+    else
+      render :new
+    end
+  end
 
   def edit
     @list = List.find(params[:id])
+    # If you do want to create a bookmark for the list at the same time (not typical), you'll need:
+    # @bookmark = Bookmark.new
   end
 
   def update
     @list = List.find(params[:id])
-    if @list.update(list_params)
+    @list.update(list_params)
+    if @list.save
       redirect_to @list, notice: 'List was successfully updated.'
     else
       render :edit
