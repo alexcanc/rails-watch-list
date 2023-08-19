@@ -277,3 +277,18 @@ nav a:hover {
   position: absolute;
   color: blue;
 }
+
+.list-tile {
+  background-size: cover;
+  background-position: center;
+  width: 100%; // Set your desired width here
+  height: 100px; // Since you've defined your image size as 100x100 earlier
+  position: relative; // Will be used to position the text and icons on top of the background
+  color: #ffffff; // Making text color white for better visibility on images, adjust as needed
+  padding: 10px; // Add some padding for inner content
+}
+
+.list-tile .overlay-content {
+  position: relative; // Keeping the content inside the card
+  z-index: 2; // Ensure content is on top of the background
+}
