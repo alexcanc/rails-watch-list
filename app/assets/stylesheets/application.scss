@@ -305,3 +305,13 @@ nav a:hover {
   background: none;   /* If the button inherits any background color, you can reset it */
   padding: 2px 5px;   /* Some padding for better appearance, adjust as needed */
 }
+
+.star {
+  color: gold;
+  margin-right: 2px;
+}
+
+.empty-star {
+  color: silver;
+  margin-right: 2px;
+}
