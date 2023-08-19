@@ -1,11 +1,7 @@
 <h1>Create a new List</h1>
 
-<%= form_for @list, html: { multipart: true } do |form| %>
-  <%= form.label :name %>
-  <%= form.text_field :name %>
-
-  <%= form.label :image, "Upload Image" %>
-  <%= form.file_field :image %>
-
-  <%= form.submit %>
+<%= simple_form_for @list do |f| %>
+  <%= f.input :name %>
+  <%= f.input :image, as: :file %> <!-- The image upload field -->
+  <%= f.submit "Create List" %>
 <% end %>
