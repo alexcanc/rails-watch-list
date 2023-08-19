@@ -7,9 +7,9 @@ class ListsController < ApplicationController
     @lists = List.all
   end
   @bookmarks = Bookmark.where(list: @list)
-end
+  end
 
-def show
+  def show
   @list = List.find(params[:id])
 
   if params[:movie_query].present?
@@ -19,7 +19,7 @@ def show
   end
 
   @bookmarks = Bookmark.where(list: @list)
-end
+  end
 
   def new
     @list = List.new
@@ -34,18 +34,24 @@ end
     redirect_to lists_path, notice: 'List was successfully deleted.'
   end
 
-  def create
-    @list = List.new(list_params)
-    if @list.save
-      redirect_to @list, notice: 'List was successfully created.'
+  # app/controllers/lists_controller.rb
+
+  def edit
+    @list = List.find(params[:id])
+  end
+
+  def update
+    @list = List.find(params[:id])
+    if @list.update(list_params)
+      redirect_to @list, notice: 'List was successfully updated.'
     else
-      render :new
+      render :edit
     end
   end
 
   private
 
   def list_params
-    params.require(:list).permit(:name)
+    params.require(:list).permit(:name, :image)
   end
 end
