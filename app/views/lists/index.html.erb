@@ -19,7 +19,7 @@
       <div class="overlay-content">
         <%= link_to list.name, list_path(list) %>
         <%= link_to "✖ Delete", list_path(list),  data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "ms-3 text-danger delete-button" %>
-        <%= link_to "✎ Edit", list_path(list), class: "ms-2 text-info delete-button edit-button" %>
+        <%= link_to "✎ Edit", edit_list_path(list), class: "ms-2 text-info delete-button" %>
       </div>
     </div>
   <% end %>

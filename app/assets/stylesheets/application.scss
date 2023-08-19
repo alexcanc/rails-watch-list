@@ -288,6 +288,20 @@ nav a:hover {
   z-index: 2; // Ensure content is on top of the background
 }
 
-.edit-button {
+.list-tile .edit-button {
+  position: absolute;
+  bottom: 3px;
   right: 100px;
+  left: auto;
+  top: auto;
+  transform: none;
+  font-size: 18px;
+  border: none;
+  text-decoration: none;
+  color: rgb(255, 33, 33);
+  font-weight: bold;
+  cursor: pointer;
+  text-shadow: none;  /* To remove any inherited text-shadow */
+  background: none;   /* If the button inherits any background color, you can reset it */
+  padding: 2px 5px;   /* Some padding for better appearance, adjust as needed */
 }
