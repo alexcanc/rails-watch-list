@@ -27,10 +27,7 @@ class ListsController < ApplicationController
 
   def create
     @list = List.new(list_params)
-
     if @list.save
-      # Fetch related movies for the new list and associate them
-      seed_movies_for_list(@list.name, @list)
       redirect_to lists_path, notice: 'List was successfully created.'
     else
       render :new
@@ -64,26 +61,5 @@ class ListsController < ApplicationController
 
   def set_list
     @list = List.find(params[:id])
-  end
-
-  def seed_movies_for_list(query, list)
-    movies = fetch_movies(query)
-    movies.first(10).each do |movie_data|
-      movie = Movie.find_or_create_by(
-        title: movie_data['title'],
-        overview: movie_data['overview'],
-        poster_url: "https://image.tmdb.org/t/p/original#{movie_data['poster_path']}",
-        rating: movie_data['vote_average']
-      )
-      Bookmark.create(list: list, movie: movie, comment: "Related to #{query}")
-    end
-  end
-
-  def fetch_movies(query)
-    encoded_query = URI.encode_www_form_component(query)
-    url = "http://tmdb.lewagon.com/movie/search?query=#{encoded_query}"
-    movies_serialized = URI.open(url).read
-    movies = JSON.parse(movies_serialized)
-    movies['results']
   end
 end
