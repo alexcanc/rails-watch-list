@@ -189,7 +189,9 @@ nav a:hover {
 }
 
 .add-review {
-  margin-top: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 .review-title {
@@ -309,9 +311,16 @@ nav a:hover {
 .star {
   color: gold;
   margin-right: 2px;
+  font-size: 18px;
 }
 
 .empty-star {
   color: silver;
   margin-right: 2px;
+}
+
+h3 {
+  text-align: center;
+  margin-bottom: 30px;
+  margin-top: 10px;
 }
