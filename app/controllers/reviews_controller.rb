@@ -1,15 +1,13 @@
 class ReviewsController < ApplicationController
-
   def new
     @review = Review.new
   end
 
   def create
-    @list = List.find(params[:list_id])
-    @review = @list.reviews.new(review_params)
-
+    @review = Review.new(review_params)
+    @review.user = current_user
     if @review.save
-      redirect_to list_path(@list)
+      redirect_to new_review_path
     else
       flash[:alert] = "Something went wrong."
       render :new
@@ -18,8 +16,7 @@ class ReviewsController < ApplicationController
 
   private
 
-def review_params
-  params.require(:review).permit(:content, :rating)
-end
-
+  def review_params
+    params.require(:review).permit(:content, :rating)
+  end
 end
