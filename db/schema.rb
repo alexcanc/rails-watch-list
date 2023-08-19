@@ -21,6 +21,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_14_181912) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["list_id"], name: "index_bookmarks_on_list_id"
+    t.index ["movie_id", "list_id"], name: "index_bookmarks_on_movie_id_and_list_id", unique: true
     t.index ["movie_id"], name: "index_bookmarks_on_movie_id"
   end
 
@@ -49,6 +50,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_14_181912) do
   end
 
   add_foreign_key "bookmarks", "lists"
-  add_foreign_key "bookmarks", "movies"
+  add_foreign_key "bookmarks", "movies", on_delete: :restrict
   add_foreign_key "reviews", "lists"
 end
