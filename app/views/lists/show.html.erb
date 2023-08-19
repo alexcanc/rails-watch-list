@@ -32,7 +32,12 @@
     <% @list.reviews.each do |review| %>
         <div class="review-content">
   <p><%= review.content %></p>
-  <div class="star-rating" data-controller="star-rating" data-rating="<%= review.rating %>"></div>
+  <div class="rating" data-controller="star-rating" data-star-rating-rating-value="<%= review.rating %>">
+    <div class="rating-stars">
+      <% (1..5).each do |i| %>
+        <span class="star <%= 'active' if i <= review.rating %>"></span>
+      <% end %>
+    </div>
 </div>
     <% end %>
 
