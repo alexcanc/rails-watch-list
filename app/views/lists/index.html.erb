@@ -2,6 +2,7 @@
   <%= text_field_tag :list_query, params[:list_query], placeholder: "Search lists..." %>
   <%= submit_tag "Search Lists" %>
 <% end %>
+
 <% if @lists.empty? %>
   <p>No lists found for your search criteria.</p>
 <% end %>
@@ -13,10 +14,11 @@
 
 <div class="lists-container">
   <% @lists.each do |list| %>
-    <div class="list-tile" style="background-image: url('https://wallpapers.com/images/featured-full/avengers-vm16xv4a69smdauy.jpg')">
-  <%= link_to list.name, list_path(list) %>
-  <%= link_to "✖ Delete", list_path(list),  data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "ms-3 text-danger", class: "delete-button" %>
-</div>
+    <div class="list-tile" style="background-image: url('<%= rails_blob_url(list.image) if list.image.attached? %>')">
+      <%= image_tag(list.image, size: "100x100") if list.image.attached? %> <!-- Displaying the uploaded image -->
+      <%= link_to list.name, list_path(list) %>
+      <%= link_to "✖ Delete", list_path(list),  data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "ms-3 text-danger delete-button" %>
+    </div>
   <% end %>
 </div>
 <div class="clearfix"></div>
