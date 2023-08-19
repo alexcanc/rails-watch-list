@@ -1,6 +1,7 @@
 console.log("File is loaded!");
 
 import { Controller } from "stimulus";
+
 import Typed from "typed.js";
 
 export default class extends Controller {
