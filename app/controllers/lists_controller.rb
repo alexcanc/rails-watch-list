@@ -28,7 +28,7 @@ class ListsController < ApplicationController
   def create
     @list = List.new(list_params)
     if @list.save
-      redirect_to list_path, notice: 'List was successfully created.'
+      redirect_to @list, notice: 'List was successfully created.'
     else
       render :new
     end
@@ -41,7 +41,7 @@ class ListsController < ApplicationController
   def update
     # You've already set @list using before_action
     if @list.update(list_params)  # .update will save the model if validations pass
-      redirect_to list_path, notice: 'List was successfully updated.'
+      redirect_to @list, notice: 'List was successfully updated.'
     else
       render :edit
     end
