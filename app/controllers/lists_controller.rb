@@ -35,9 +35,7 @@ class ListsController < ApplicationController
   end
 
   def edit
-    # You've already set @list using before_action
-    # If you do want to create a bookmark for the list at the same time (not typical), you'll need:
-    # @bookmark = Bookmark.new
+    @list = List.find(params[:id])
   end
 
   def update
